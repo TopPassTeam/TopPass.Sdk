@@ -1,0 +1,40 @@
+name: Generate And Build Sdk
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+
+      - name: Install global tools
+        run: |
+          npm install
+
+      - name: Generate files
+        run: |
+          npm run client:generate -- -i ${{ vars.SWAGGER_DOCS_URL }}
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.TOPPASS_ACCESS_TOKEN }}
+          commit-message: Generate SDK updates
+          committer: Redhouane Sobaihi <redouane.sobaihi@live.com>
+          author: Redhouane Sobaihi <redouane.sobaihi@live.com>
+          branch: patch
+          base: main
+          delete-branch: true
+          title: '[Update] New changes needs to be merged'
+          body: |
+            Merge client changes
