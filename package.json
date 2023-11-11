@@ -1,0 +1,16 @@
+{
+  "name": "@toppass/sdk",
+  "version": "1.0.0",
+  "description": "TopPass SDK",
+  "main": "index.js",
+  "scripts": {
+    "client:generate": "npx openapi -o src -c node --name TopPassClient --useUnionTypes --postfixServices ''"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "openapi-typescript-codegen": "^0.25.0",
+    "typescript": "^5.2.2"
+  }
+}
