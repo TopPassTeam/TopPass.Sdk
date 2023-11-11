@@ -1,0 +1,29 @@
+{
+  "name": "@toppass/sdk",
+  "version": "1.0.0",
+  "description": "TopPass SDK",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist build && tsc && rollup -c rollup.config.js",
+    "client:generate": "npx openapi -o src -c axios --name TopPassClient --useUnionTypes --postfixServices ''"
+  },
+  "authors": [
+    "Redhouane Sobaihi"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "openapi-typescript-codegen": "^0.25.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.4.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "form-data": "^4.0.0"
+  }
+}
