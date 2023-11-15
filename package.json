@@ -1,17 +1,23 @@
 {
   "name": "@toppass/sdk",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "TopPass SDK",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "build": "rimraf dist build && tsc && rollup -c rollup.config.js",
+    "prepublish": "npm run build",
     "client:generate": "npx openapi -o src -c axios --name TopPassClient --useUnionTypes --postfixServices ''"
   },
   "authors": [
     "Redhouane Sobaihi"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/To-pass/TopPass.Sdk"
+  },
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",

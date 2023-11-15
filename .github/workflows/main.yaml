@@ -41,7 +41,7 @@ jobs:
           delete-branch: true
           title: Release ${{ steps.date.outputs.date }}
           body: |
-            Merge release `${{ steps.date.outputs.date }}` to main
+            Merge release `${{ steps.date.outputs.date }}`
           labels: |
             Release
           assignees: Redouane64

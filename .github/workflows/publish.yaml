@@ -16,6 +16,6 @@ jobs:
           node-version: ${{ vars.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-      - run: npm publish --access public
+      - run: npm publish --access public 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOPPASS_NPM_TOKEN }}
