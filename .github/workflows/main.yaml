@@ -1,9 +1,9 @@
-name: Generate And Build Sdk
+name: Generate Sdk
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   generate:
@@ -33,12 +33,14 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.TOPPASS_ACCESS_TOKEN }}
-          commit-message: Generate SDK updates
+          commit-message: 'release: generate release ${{ steps.date.outputs.date }}'
           committer: Redhouane Sobaihi <redouane.sobaihi@live.com>
           author: Redhouane Sobaihi <redouane.sobaihi@live.com>
           branch: release/${{ steps.date.outputs.date }}
-          base: main
+          base: develop
           delete-branch: true
-          title: '[Update] New changes needs to be merged'
+          title: Release ${{ steps.date.outputs.date }}
           body: |
-            Merge client changes
+            Merge release `${{ steps.date.outputs.date }}` to main
+          labels: |
+            Release
