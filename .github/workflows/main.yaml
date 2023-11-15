@@ -1,4 +1,4 @@
-name: Generate Sdk
+name: Generate Sdk Changes Pull Request
 
 on:
   push:
@@ -44,3 +44,4 @@ jobs:
             Merge release `${{ steps.date.outputs.date }}` to main
           labels: |
             Release
+          assignees: Redouane64
