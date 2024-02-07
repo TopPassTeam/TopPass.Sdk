@@ -4,8 +4,9 @@
 /* eslint-disable */
 
 import type { DurationType } from './DurationType';
+import type { EmployeeResponse } from './EmployeeResponse';
 
-export type ServiceResponse = {
+export type ServiceDetailsResponse = {
     id: string;
     name: string;
     description: string;
@@ -14,5 +15,6 @@ export type ServiceResponse = {
     currency: string;
     metadata: Record<string, any>;
     categories?: Array<string>;
+    employees: Array<EmployeeResponse>;
 };
 

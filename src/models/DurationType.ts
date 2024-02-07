@@ -3,10 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateServiceBookingParams = {
-    serviceId: string;
-    startTime: string;
-    endTime: string;
-    days: number;
+export type DurationType = {
+    minutes: number;
+    hours: number;
 };
 

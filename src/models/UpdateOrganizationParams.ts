@@ -4,10 +4,13 @@
 /* eslint-disable */
 
 import type { OrganizationLocation } from './OrganizationLocation';
+import type { OrganizationScheduleType } from './OrganizationScheduleType';
 
 export type UpdateOrganizationParams = {
     name?: string;
     phoneNumber?: string;
     location?: OrganizationLocation;
+    metadata?: Record<string, any>;
+    schedule: Array<OrganizationScheduleType>;
 };
 

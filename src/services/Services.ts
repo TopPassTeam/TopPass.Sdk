@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateServiceParams } from '../models/CreateServiceParams';
-import type { ServiceResponse } from '../models/ServiceResponse';
+import type { ServiceDetailsResponse } from '../models/ServiceDetailsResponse';
 import type { ServicesPageResponse } from '../models/ServicesPageResponse';
 import type { UpdateServiceParams } from '../models/UpdateServiceParams';
 
@@ -53,6 +53,24 @@ export class Services {
     }
 
     /**
+     * Get services by ID
+     * @param id
+     * @returns ServiceDetailsResponse Service object
+     * @throws ApiError
+     */
+    public get(
+        id: string,
+    ): CancelablePromise<ServiceDetailsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/services/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * Update an existing service object
      * @param id
      * @param requestBody
@@ -65,30 +83,12 @@ export class Services {
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/services',
+            url: '/services/{id}',
             path: {
                 'id': id,
             },
             body: requestBody,
             mediaType: 'application/json',
-        });
-    }
-
-    /**
-     * Get services by ID
-     * @param id
-     * @returns ServiceResponse Service object
-     * @throws ApiError
-     */
-    public get(
-        id: string,
-    ): CancelablePromise<ServiceResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/services/{id}',
-            path: {
-                'id': id,
-            },
         });
     }
 

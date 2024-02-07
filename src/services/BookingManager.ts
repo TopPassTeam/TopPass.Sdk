@@ -27,7 +27,7 @@ export class BookingManager {
         page: number,
         pageSize: number,
         serviceId?: string,
-        employeeId?: string,
+        employeeId?: number,
     ): CancelablePromise<BookingsPageResponse> {
         return this.httpRequest.request({
             method: 'GET',

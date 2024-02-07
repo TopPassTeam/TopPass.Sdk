@@ -9,13 +9,12 @@ export type CreateServiceParams = {
     name: string;
     description: string;
     metadata?: Record<string, any>;
-    days: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'all';
     price?: string;
     currency?: string;
     /**
      * Service duration in minutes
      */
-    duration: number;
+    duration?: Record<string, any>;
     categories?: Array<string>;
     employees?: Array<CreateEmployeeBookingParams>;
 };
