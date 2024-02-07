@@ -15,23 +15,15 @@ export class Authentication {
     /**
      * Create new user
      * @param requestBody
-     * @param trueClientIp Client IP
-     * @param userAgent
      * @returns any Registration succeeded
      * @throws ApiError
      */
     public register(
         requestBody: CreateUserParams,
-        trueClientIp?: string,
-        userAgent?: string,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/register',
-            headers: {
-                'true-client-ip': trueClientIp,
-                'user-agent': userAgent,
-            },
             body: requestBody,
             mediaType: 'application/json',
         });
@@ -40,23 +32,15 @@ export class Authentication {
     /**
      * Authenticate user
      * @param requestBody
-     * @param trueClientIp Client IP
-     * @param userAgent
      * @returns void
      * @throws ApiError
      */
     public login(
         requestBody: AuthenticateUserParams,
-        trueClientIp?: string,
-        userAgent?: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/login',
-            headers: {
-                'true-client-ip': trueClientIp,
-                'user-agent': userAgent,
-            },
             body: requestBody,
             mediaType: 'application/json',
             errors: {

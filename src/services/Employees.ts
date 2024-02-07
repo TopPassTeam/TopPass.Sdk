@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateEmployeeParams } from '../models/CreateEmployeeParams';
+import type { EmployeeResponse } from '../models/EmployeeResponse';
 import type { EmployeesPageResponse } from '../models/EmployeesPageResponse';
 import type { UpdateEmployeeParams } from '../models/UpdateEmployeeParams';
 
@@ -55,27 +56,42 @@ export class Employees {
     }
 
     /**
+     * Get an employee by id
+     * @param id
+     * @returns EmployeeResponse Employee object
+     * @throws ApiError
+     */
+    public get(
+        id: number,
+    ): CancelablePromise<EmployeeResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/employees/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * Update employee object
-     * @param employeeId
+     * @param id Employee Id
      * @param requestBody
-     * @returns any Employee updated
+     * @returns void
      * @throws ApiError
      */
     public update(
-        employeeId: number,
+        id: number,
         requestBody: UpdateEmployeeParams,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/employees/{employeeId}',
+            url: '/employees/{id}',
             path: {
-                'employeeId': employeeId,
+                'id': id,
             },
             body: requestBody,
             mediaType: 'application/json',
-            errors: {
-                404: `Employee not found`,
-            },
         });
     }
 

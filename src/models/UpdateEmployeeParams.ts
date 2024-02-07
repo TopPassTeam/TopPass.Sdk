@@ -5,7 +5,8 @@
 
 export type UpdateEmployeeParams = {
     description?: string;
-    roles: Array<string>;
+    roles?: Array<string>;
     enabled: boolean;
+    metadata?: Record<string, any>;
 };
 

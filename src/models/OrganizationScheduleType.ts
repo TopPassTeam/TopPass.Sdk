@@ -3,12 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateBookingParams = {
-    employeeId: number;
-    serviceId: string;
+export type OrganizationScheduleType = {
     startTime: string;
     endTime: string;
-    days: number;
-    metadata: Record<string, any>;
+    day: Array<'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'all'>;
 };
 
