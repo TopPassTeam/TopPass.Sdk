@@ -4,6 +4,7 @@
 /* eslint-disable */
 
 import type { OrganizationLocation } from './OrganizationLocation';
+import type { OrganizationScheduleType } from './OrganizationScheduleType';
 
 export type OrganizationResponse = {
     id: string;
@@ -12,5 +13,7 @@ export type OrganizationResponse = {
     createdAt: string;
     updatedAt: string;
     location: OrganizationLocation;
+    metadata: Record<string, any>;
+    schedule: Array<OrganizationScheduleType>;
 };
 

@@ -9,7 +9,8 @@ export type CreateEmployeeParams = {
     email: string;
     description?: string;
     roles: Array<string>;
-    enabled: boolean;
+    enabled?: boolean;
+    metadata?: Record<string, any>;
     /**
      * List of services to assigned to the employee
      */

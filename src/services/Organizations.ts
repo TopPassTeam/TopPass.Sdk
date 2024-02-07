@@ -6,6 +6,7 @@ import type { CreateOrganizationParams } from '../models/CreateOrganizationParam
 import type { EmployeeLoginResponse } from '../models/EmployeeLoginResponse';
 import type { EmployeeOrganizationPageResponse } from '../models/EmployeeOrganizationPageResponse';
 import type { OrganizationResponse } from '../models/OrganizationResponse';
+import type { OrganizationRolesResponse } from '../models/OrganizationRolesResponse';
 import type { UpdateOrganizationParams } from '../models/UpdateOrganizationParams';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -14,6 +15,70 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class Organizations {
 
     constructor(public readonly httpRequest: BaseHttpRequest) {}
+
+    /**
+     * Get organization object by id
+     * @param id
+     * @returns OrganizationResponse Organization object
+     * @throws ApiError
+     */
+    public getOrganizationById(
+        id: string,
+    ): CancelablePromise<OrganizationResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/organizations/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
+     * Update organization object data
+     * @param id
+     * @param requestBody
+     * @returns any Organization object updated successfully
+     * @throws ApiError
+     */
+    public update(
+        id: string,
+        requestBody: UpdateOrganizationParams,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/organizations/{id}',
+            path: {
+                'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                404: `Organization not found`,
+            },
+        });
+    }
+
+    /**
+     * Login to an organization
+     * @param id Organization Id
+     * @returns EmployeeLoginResponse login succeeded
+     * @throws ApiError
+     */
+    public login(
+        id: string,
+    ): CancelablePromise<EmployeeLoginResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/organizations/{id}',
+            path: {
+                'id': id,
+            },
+            errors: {
+                404: `organization does not exist or employee is not part of the organization`,
+            },
+        });
+    }
 
     /**
      * Create an organization object
@@ -54,48 +119,14 @@ export class Organizations {
     }
 
     /**
-     * Update organization object data
-     * @param id
-     * @param requestBody
-     * @returns any Organization object updated successfully
+     * Get organization defined roles
+     * @returns OrganizationRolesResponse
      * @throws ApiError
      */
-    public update(
-        id: string,
-        requestBody: UpdateOrganizationParams,
-    ): CancelablePromise<any> {
+    public getRoles(): CancelablePromise<OrganizationRolesResponse> {
         return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/organizations/{id}',
-            path: {
-                'id': id,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-            errors: {
-                404: `Organization not found`,
-            },
-        });
-    }
-
-    /**
-     * Login to an organization
-     * @param organizationId Organization Id
-     * @returns EmployeeLoginResponse login succeeded
-     * @throws ApiError
-     */
-    public login(
-        organizationId: string,
-    ): CancelablePromise<EmployeeLoginResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/organizations/{organizationId}',
-            path: {
-                'organizationId': organizationId,
-            },
-            errors: {
-                404: `organization does not exist or employee is not part of the organization`,
-            },
+            method: 'GET',
+            url: '/organizations/roles',
         });
     }
 
