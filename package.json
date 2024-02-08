@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/To-pass/TopPass.Sdk"
+    "url": "git+https://github.com/To-pass/TopPass.Sdk.git"
   },
   "license": "MIT",
   "devDependencies": {
