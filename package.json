@@ -1,7 +1,7 @@
 {
   "name": "@toppass/sdk",
   "version": "1.0.0-alpha.4",
-  "description": "TopPass SDK",
+  "description": "TopPass Client SDK",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "exports": {
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/To-pass/TopPass.Sdk.git"
+    "url": "git+ssh://git@github.com/TopPassTeam/TopPass.Sdk.git"
   },
   "license": "MIT",
   "devDependencies": {
