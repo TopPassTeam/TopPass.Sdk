@@ -14,7 +14,7 @@ export type CreateServiceParams = {
     /**
      * Service duration in minutes
      */
-    duration?: Record<string, any>;
+    duration?: number;
     categories?: Array<string>;
     employees?: Array<CreateEmployeeBookingParams>;
 };
