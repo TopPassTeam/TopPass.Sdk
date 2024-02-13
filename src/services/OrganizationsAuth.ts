@@ -8,7 +8,7 @@ import type { OrganizationLoginResponse } from '../models/OrganizationLoginRespo
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
-export class OrganizationAuthentication {
+export class OrganizationsAuth {
 
     constructor(public readonly httpRequest: BaseHttpRequest) {}
 
