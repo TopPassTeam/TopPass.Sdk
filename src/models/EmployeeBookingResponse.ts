@@ -29,6 +29,10 @@ export type EmployeeBookingResponse = {
      */
     days: Array<string>;
     /**
+     * Indicate if the booking is active or not
+     */
+    enabled: boolean;
+    /**
      * Additional metadata for the booking
      */
     metadata: Record<string, any>;
