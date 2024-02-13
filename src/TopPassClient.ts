@@ -10,6 +10,7 @@ import { Authentication } from './services/Authentication';
 import { BookingManager } from './services/BookingManager';
 import { Categories } from './services/Categories';
 import { Employees } from './services/Employees';
+import { OrganizationAuthentication } from './services/OrganizationAuthentication';
 import { Organizations } from './services/Organizations';
 import { Services } from './services/Services';
 import { Users } from './services/Users';
@@ -22,6 +23,7 @@ export class TopPassClient {
     public readonly bookingManager: BookingManager;
     public readonly categories: Categories;
     public readonly employees: Employees;
+    public readonly organizationAuthentication: OrganizationAuthentication;
     public readonly organizations: Organizations;
     public readonly services: Services;
     public readonly users: Users;
@@ -45,6 +47,7 @@ export class TopPassClient {
         this.bookingManager = new BookingManager(this.request);
         this.categories = new Categories(this.request);
         this.employees = new Employees(this.request);
+        this.organizationAuthentication = new OrganizationAuthentication(this.request);
         this.organizations = new Organizations(this.request);
         this.services = new Services(this.request);
         this.users = new Users(this.request);

@@ -3,9 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type EmployeeLoginResponse = {
-    organizationId: string;
-    organizationName: string;
-    roles: Array<number>;
+export type UpdateEmailParams = {
+    email: string;
 };
 

@@ -18,12 +18,14 @@ export class Services {
      * List services by organization ID
      * @param page
      * @param pageSize
+     * @param token Organization token
      * @returns ServicesPageResponse List of service objects
      * @throws ApiError
      */
     public list(
         page: number,
         pageSize: number,
+        token: string,
     ): CancelablePromise<ServicesPageResponse> {
         return this.httpRequest.request({
             method: 'GET',
@@ -31,22 +33,28 @@ export class Services {
             query: {
                 'page': page,
                 'pageSize': pageSize,
+                'token': token,
             },
         });
     }
 
     /**
      * Create a service object
+     * @param token Organization token
      * @param requestBody
      * @returns any Service object created successfully
      * @throws ApiError
      */
     public create(
+        token: string,
         requestBody: CreateServiceParams,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/services',
+            query: {
+                'token': token,
+            },
             body: requestBody,
             mediaType: 'application/json',
         });
@@ -55,11 +63,13 @@ export class Services {
     /**
      * Get services by ID
      * @param id
+     * @param token Organization token
      * @returns ServiceDetailsResponse Service object
      * @throws ApiError
      */
     public get(
         id: string,
+        token: string,
     ): CancelablePromise<ServiceDetailsResponse> {
         return this.httpRequest.request({
             method: 'GET',
@@ -67,18 +77,23 @@ export class Services {
             path: {
                 'id': id,
             },
+            query: {
+                'token': token,
+            },
         });
     }
 
     /**
      * Update an existing service object
      * @param id
+     * @param token Organization token
      * @param requestBody
      * @returns void
      * @throws ApiError
      */
     public update(
         id: string,
+        token: string,
         requestBody: UpdateServiceParams,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
@@ -86,6 +101,9 @@ export class Services {
             url: '/services/{id}',
             path: {
                 'id': id,
+            },
+            query: {
+                'token': token,
             },
             body: requestBody,
             mediaType: 'application/json',

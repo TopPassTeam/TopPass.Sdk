@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { UpdateEmailParams } from '../models/UpdateEmailParams';
 import type { UpdateUserParams } from '../models/UpdateUserParams';
 import type { UserResponse } from '../models/UserResponse';
 
@@ -36,6 +37,23 @@ export class Users {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/users',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Update user email
+     * @param requestBody
+     * @returns void
+     * @throws ApiError
+     */
+    public updateEmail(
+        requestBody: UpdateEmailParams,
+    ): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/users/email',
             body: requestBody,
             mediaType: 'application/json',
         });

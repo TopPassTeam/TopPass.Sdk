@@ -4,6 +4,7 @@
 /* eslint-disable */
 
 import type { OrganizationLocation } from './OrganizationLocation';
+import type { OrganizationRole } from './OrganizationRole';
 import type { OrganizationScheduleType } from './OrganizationScheduleType';
 
 export type OrganizationResponse = {
@@ -15,5 +16,6 @@ export type OrganizationResponse = {
     location: OrganizationLocation;
     metadata: Record<string, any>;
     schedule: Array<OrganizationScheduleType>;
+    roles: Array<OrganizationRole>;
 };
 

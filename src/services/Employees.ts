@@ -18,12 +18,14 @@ export class Employees {
      * Get list of employees
      * @param page
      * @param pageSize
+     * @param token Organization token
      * @returns EmployeesPageResponse Employees list
      * @throws ApiError
      */
     public list(
         page: number,
         pageSize: number,
+        token: string,
     ): CancelablePromise<EmployeesPageResponse> {
         return this.httpRequest.request({
             method: 'GET',
@@ -31,22 +33,28 @@ export class Employees {
             query: {
                 'page': page,
                 'pageSize': pageSize,
+                'token': token,
             },
         });
     }
 
     /**
      * Create employee object
+     * @param token Organization token
      * @param requestBody
      * @returns any Employee created
      * @throws ApiError
      */
     public create(
+        token: string,
         requestBody: CreateEmployeeParams,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/employees',
+            query: {
+                'token': token,
+            },
             body: requestBody,
             mediaType: 'application/json',
             errors: {
@@ -58,11 +66,13 @@ export class Employees {
     /**
      * Get an employee by id
      * @param id
+     * @param token Organization token
      * @returns EmployeeResponse Employee object
      * @throws ApiError
      */
     public get(
         id: number,
+        token: string,
     ): CancelablePromise<EmployeeResponse> {
         return this.httpRequest.request({
             method: 'GET',
@@ -70,18 +80,23 @@ export class Employees {
             path: {
                 'id': id,
             },
+            query: {
+                'token': token,
+            },
         });
     }
 
     /**
      * Update employee object
      * @param id Employee Id
+     * @param token Organization token
      * @param requestBody
      * @returns void
      * @throws ApiError
      */
     public update(
         id: number,
+        token: string,
         requestBody: UpdateEmployeeParams,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
@@ -89,6 +104,9 @@ export class Employees {
             url: '/employees/{id}',
             path: {
                 'id': id,
+            },
+            query: {
+                'token': token,
             },
             body: requestBody,
             mediaType: 'application/json',

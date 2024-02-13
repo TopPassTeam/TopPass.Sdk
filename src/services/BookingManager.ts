@@ -18,6 +18,7 @@ export class BookingManager {
      * List employee bookings for current active organization
      * @param page
      * @param pageSize
+     * @param token Organization token
      * @param serviceId
      * @param employeeId
      * @returns BookingsPageResponse
@@ -26,6 +27,7 @@ export class BookingManager {
     public list(
         page: number,
         pageSize: number,
+        token: string,
         serviceId?: string,
         employeeId?: number,
     ): CancelablePromise<BookingsPageResponse> {
@@ -37,6 +39,7 @@ export class BookingManager {
                 'employeeId': employeeId,
                 'page': page,
                 'pageSize': pageSize,
+                'token': token,
             },
         });
     }

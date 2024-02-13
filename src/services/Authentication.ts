@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AccessTokenResponse } from '../models/AccessTokenResponse';
 import type { AuthenticateUserParams } from '../models/AuthenticateUserParams';
 import type { CreateUserParams } from '../models/CreateUserParams';
 
@@ -13,14 +14,14 @@ export class Authentication {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
-     * Create new user
+     * Create new user and return authentication token
      * @param requestBody
-     * @returns any Registration succeeded
+     * @returns AccessTokenResponse Access token
      * @throws ApiError
      */
     public register(
         requestBody: CreateUserParams,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<AccessTokenResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/register',
@@ -30,14 +31,14 @@ export class Authentication {
     }
 
     /**
-     * Authenticate user
+     * Authenticate user and return authentication token
      * @param requestBody
-     * @returns void
+     * @returns AccessTokenResponse Access token
      * @throws ApiError
      */
     public login(
         requestBody: AuthenticateUserParams,
-    ): CancelablePromise<void> {
+    ): CancelablePromise<AccessTokenResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/login',
@@ -58,6 +59,51 @@ export class Authentication {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/logout',
+        });
+    }
+
+    /**
+     * refresh an existing authentication token
+     * @returns AccessTokenResponse A new authentication and refresh tokens
+     * @throws ApiError
+     */
+    public refreshToken(): CancelablePromise<AccessTokenResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/auth/refresh',
+            errors: {
+                400: `Bad token`,
+            },
+        });
+    }
+
+    /**
+     * Verify user account
+     * @param token
+     * @returns any Logout succeeded
+     * @throws ApiError
+     */
+    public verify(
+        token: any,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/auth/verify',
+            query: {
+                'token': token,
+            },
+        });
+    }
+
+    /**
+     * Send verification request to user
+     * @returns any Logout succeeded
+     * @throws ApiError
+     */
+    public sendVerificationRequest(): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/auth/verify',
         });
     }
 
