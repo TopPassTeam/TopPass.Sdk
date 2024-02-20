@@ -25,7 +25,7 @@ export type EmployeeResponse = {
     /**
      * Employee organization roles
      */
-    roles: number;
+    roles: Array<string>;
     /**
      * Employee creation date
      */

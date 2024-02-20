@@ -43,7 +43,7 @@ export class OrganizationsAuth {
     public getUserOrganizations(
         page: number,
         pageSize: number,
-    ): CancelablePromise<Array<EmployeeOrganizationPageResponse>> {
+    ): CancelablePromise<EmployeeOrganizationPageResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/organizations',
