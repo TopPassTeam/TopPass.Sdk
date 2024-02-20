@@ -8,7 +8,10 @@ import type { CreateServiceBookingParams } from './CreateServiceBookingParams';
 export type CreateEmployeeParams = {
     email: string;
     description?: string;
-    roles: Array<string>;
+    /**
+     * Employee roles, default roles: User, Employee
+     */
+    roles?: Array<string>;
     enabled?: boolean;
     metadata?: Record<string, any>;
     /**

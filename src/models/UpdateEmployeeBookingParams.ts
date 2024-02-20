@@ -6,7 +6,7 @@
 export type UpdateEmployeeBookingParams = {
     startTime?: string;
     endTime?: string;
-    days?: number;
+    days?: Array<'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'all'>;
     /**
      * Indicate if the booking is active or not
      */
