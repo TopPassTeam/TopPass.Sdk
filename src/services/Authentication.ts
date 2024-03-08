@@ -64,13 +64,19 @@ export class Authentication {
 
     /**
      * refresh an existing authentication token
+     * @param token Refresh token
      * @returns AccessTokenResponse A new authentication and refresh tokens
      * @throws ApiError
      */
-    public refreshToken(): CancelablePromise<AccessTokenResponse> {
+    public refreshToken(
+        token: string,
+    ): CancelablePromise<AccessTokenResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/auth/refresh',
+            query: {
+                'token': token,
+            },
             errors: {
                 400: `Bad token`,
             },
