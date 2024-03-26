@@ -48,6 +48,7 @@ export { Authentication } from './services/Authentication';
 export { BookingManager } from './services/BookingManager';
 export { Categories } from './services/Categories';
 export { Employees } from './services/Employees';
+export { OrganizationInvites } from './services/OrganizationInvites';
 export { Organizations } from './services/Organizations';
 export { OrganizationsAuth } from './services/OrganizationsAuth';
 export { Services } from './services/Services';
